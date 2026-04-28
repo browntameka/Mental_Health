@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register</title>
+
+<link rel="stylesheet" href="styles.css">
+
+
+
+<script>
+function validateForm() {
+    let name = document.forms["myForm"]["name"].value;
+    let email = document.forms["myForm"]["email"].value;
+    let gender = document.forms["myForm"]["gender"];
+
+    // Check name
+    if (name == "") {
+        alert("Name must be filled out");
+        return false;
+    }
+
+    // Check email
+    if (email == "") {
+        alert("Email must be filled out");
+        return false;
+    }
+
+    // Simple email format check
+    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!email.match(emailPattern)) {
+        alert("Enter a valid email address");
+        return false;
+    }
+
+    // Check gender (radio buttons)
+    let genderSelected = false;
+    for (let i = 0; i < gender.length; i++) {
+        if (gender[i].checked) {
+            genderSelected = true;
+            break;
+        }
+    }
+
+    if (!genderSelected) {
+        alert("Please select your gender");
+        return false;
+    }
+
+    return true; // form is valid
+}
+
+
+
+</script>
+    
+</head>
+
+<body>
+
+<h1>REGISTER FOR UPDATES</h1>
+
+<form name="myForm" onsubmit="return validateForm()">
+
+Name: <input type="text" name="name"><br><br>
+
+Email: <input type="text" name="email"><br><br>
+
+Gender:
+<input type="radio" name="gender"> Male
+<input type="radio" name="gender"> Female<br><br>
+
+Interests:
+<input type="checkbox"> Stress
+<input type="checkbox"> Anxiety
+<input type="checkbox"> Share Experience<br><br>
+
+Country:
+<select>
+<option>Jamaica</option>
+<option>USA</option>
+<option>UK</option>
+<option>Others</option>
+</select><br><br>
+
+<input type="submit" value="Submit">
+
+</form>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="disorders.html">Disorders</a>
+<a href="tips.html">Tips</a>
+</nav>
+
+</body>
+</html>
